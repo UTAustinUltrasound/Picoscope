@@ -226,7 +226,7 @@ end
 
 %% Stop the device
 
-stop_status = invoke(picoDevice, 'ps3000aStop');
+% stop_status = invoke(picoDevice, 'ps3000aStop');
 
 %% Convert data values to milliVolt values
 
@@ -250,22 +250,7 @@ waveform.buffer_c_mv = adc2mv(waveform.buffer_c, voltage_range_chC, picoDevice.m
 
 
 t_ns = double(timeIntNs1) * double([0: downSampleRatio : numSamples - 1]);
-t = t_ns/1E3; % puts time values in microseconds
+waveform.t = t_ns/1E3; % puts time values in microseconds
 
-% save 110414_acoustic_profile_skull_530khz_z0 buffer_a_mv buffer_c_mv t nCaptures numSamples
-
-% save 110414_acoustic_profile_skull_530khz_z0  buffer_a_mv buffer_c_mv buffer_a buffer_c t nCaptures numSamples
  
 end 
-
-%%
-
-max_val_status = invoke(picoDevice, 'ps3000aMaximumValue')
-
-disp('Max ADC value:');
-picoDevice.maxValue
-
-min_val_status= invoke(picoDevice, 'ps3000aMinimumValue')
-
-disp('Min ADC value:');
-picoDevice.minValue

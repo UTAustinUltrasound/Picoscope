@@ -36,7 +36,7 @@ enuminfo = deviceInfo.enuminfo;
 try
     waveform = triggeredAcq(TRACENUM, picoDevice, data, enuminfo);
 catch
-    disconnect(picoDevice)
-    clear picoDevice
+    stop_status = picoDisconnect(picoDevice);
+    error('something went wrong bro.')
 end
 % disconnect(picoDevice);
